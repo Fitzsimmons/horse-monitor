@@ -29,19 +29,19 @@ impl ClipboardHandler for Handler {
 
         if let Some(speed_capture) = SPEED_REGEX.captures(&s) {
             let speed: f64 = speed_capture.get(1).unwrap().as_str().parse().unwrap();
-            println!("Speed:  {0:.2}", speed / SPEED_MAX * 100.0);
+            println!("Speed:  {0:.2}%", speed / SPEED_MAX * 100.0);
             printed = true;
         }
 
         if let Some(jump_capture) = JUMP_REGEX.captures(&s) {
             let jump: f64 = jump_capture.get(1).unwrap().as_str().parse().unwrap();
-            println!("Jump:   {0:.2}", jump / JUMP_MAX * 100.0);
+            println!("Jump:   {0:.2}%", jump / JUMP_MAX * 100.0);
             printed = true;
         }
 
         if let Some(health_capture) = HEALTH_REGEX.captures(&s) {
             let health: f64 = health_capture.get(1).unwrap().as_str().parse().unwrap();
-            println!("Health: {0:.2}", health / HEALTH_MAX * 100.0);
+            println!("Health: {0:.2}%", health / HEALTH_MAX * 100.0);
             printed = true;
         }
 
