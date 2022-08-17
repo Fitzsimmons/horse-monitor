@@ -25,7 +25,12 @@ impl ClipboardHandler for Handler {
     fn on_clipboard_change(&mut self) -> CallbackResult {
         let mut printed = false;
 
-        let s = self.ctx.get_contents().unwrap();
+        let clipboard_contents = self.ctx.get_contents();
+        if clipboard_contents.is_err() {
+            return CallbackResult::Next;
+        }
+
+        let s = clipboard_contents.unwrap();
 
         if let Some(speed_capture) = SPEED_REGEX.captures(&s) {
             let speed: f64 = speed_capture.get(1).unwrap().as_str().parse().unwrap();
